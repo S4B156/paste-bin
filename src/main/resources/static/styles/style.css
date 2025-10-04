@@ -1,0 +1,134 @@
+/* Base styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Styling the header section */
+.header {
+    background-color: #222831;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header .signup {
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.header .signup a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Navbar styling */
+.navbar {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #393e46;
+    padding: 5px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Main container styles */
+.container {
+    margin: 20px;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Textarea styling for the post content */
+/* Контейнер для редактора и предпросмотра */
+.editor-container {
+    display: flex;
+    gap: 20px; /* Расстояние между элементами */
+}
+
+/* Поле ввода */
+.textarea {
+    flex: 1; /* Растягивается на доступное пространство */
+    height: 300px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* Блок предпросмотра */
+.output {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #f9f9f9;
+    min-height: 300px;
+    overflow: auto; /* Добавляет прокрутку при необходимости */
+}
+
+
+/* Button styles */
+.button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #393e46;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #00adb5;
+}
+
+/* Notification styles */
+.notification {
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Success message */
+.notification.success {
+    background-color: #2ecc71;
+    border-left: 5px solid #27ae60;
+}
+
+/* Error message */
+.notification.error {
+    background-color: #e74c3c;
+    border-left: 5px solid #c0392b;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

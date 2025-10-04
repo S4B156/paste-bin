@@ -1,0 +1,91 @@
+/* Base styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Styling the header section */
+.header {
+    background-color: #222831; /* Updated to match the image's dark theme */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header .signup {
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.header .signup a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Navbar styling */
+.navbar {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #393e46; /* Updated to a slightly lighter dark gray */
+    padding: 5px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Main container styles */
+.container {
+    margin: 20px auto;
+    background: white;
+    padding: 40px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form input fields styling */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Button styles */
+.button {
+    width: 100%;
+    padding: 10px;
+    background-color: #393e46; /* Updated button color to match navbar */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.button:hover {
+    background-color: #00adb5; /* Added hover color for the button */
+}

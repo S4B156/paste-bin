@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: pastebin
+  datasource:
+    url: jdbc:mysql://MySQL-8.2:3306/pasteBin-database
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: MYSQL
+    # show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}

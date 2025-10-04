@@ -1,0 +1,124 @@
+/* Base styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Styling the header section */
+.header {
+    background-color: #222831;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header .signup {
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.header .signup a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Navbar styling */
+.navbar {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #393e46;
+    padding: 5px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Main container styles */
+.container {
+    margin: 20px auto;
+    background: white;
+    padding: 40px;
+    width: 80%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #393e46;
+    color: white;
+}
+
+/* Кнопки действий */
+.action-btn {
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    margin: 0 2px;
+    padding: 0;
+}
+
+.delete-btn {
+    background-color: #ff4444;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+}
+
+.copy-btn {
+    background-color: #4CAF50;
+}
+
+.copy-btn:hover {
+    background-color: #45a049;
+}
+
+.edit-btn {
+    background-color: #2196F3;
+}
+
+.edit-btn:hover {
+    background-color: #1e88e5;
+}
+
+td.actions {
+    padding: 0;
+    white-space: nowrap;
+    text-align: center;
+}

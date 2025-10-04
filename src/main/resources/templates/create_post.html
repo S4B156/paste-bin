@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PasteBin</title>
+
+    <!-- Подключаем Markdown и подсветку кода -->
+    <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/marked/marked.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js}"></script>
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css}" rel="stylesheet"/>
+
+    <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+    <script th:src="@{/js/create-post-script.js}"></script>
+</head>
+<body>
+<!-- Header section -->
+<div class="header">
+    <h1>Post Editor</h1>
+    <div class="signup">
+        <a href="#">Welcome! [Sign Up]</a>
+    </div>
+</div>
+
+<!-- Navbar section -->
+<div class="navbar">
+    <div style="margin-right: 10px;">
+        <a href="#">Welcome</a>
+        <a href="#">Search</a>
+        <a href="#">Help</a>
+        <a href="#">About</a>
+        <a href="/myPosts">My posts</a>
+    </div>
+    <div>
+        <a href="#">English</a>
+        <a href="#">Русский</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Create a Post</h2>
+
+    <!-- Notification block -->
+    <div th:if="${message}"
+         th:class="'notification ' + (${message == 'Successfully'} ? 'success' : 'error')"
+         th:text="${message}">
+    </div>
+
+    <form th:action="@{/post/create}" th:object="${post}" method="post">
+        <div class="editor-container">
+            <textarea id="markdownInput" class="textarea" th:field="*{content}" placeholder="Write your post here..."></textarea>
+            <div id="output" class="output"></div>
+        </div>
+
+        <label for="expirationTime">Lifetime:</label>
+        <input type="datetime-local" id="expirationTime" name="expirationTime"
+               th:field="*{expirationTime}" required>
+
+        <label>
+            <input type="checkbox" id="togglePassword"> Password
+        </label>
+        <div id="password-container" style="display: none;">
+            <label for="password">Password:</label>
+            <input class="input-field" type="password" name="password" id="password" disabled>
+        </div>
+
+        <button class="button" type="submit">Post</button>
+    </form>
+</div>
+</body>
+</html>

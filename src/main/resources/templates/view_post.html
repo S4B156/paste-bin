@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PasteBin - View Post</title>
+    <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/marked/marked.min.js}"></script>
+    <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/post-style.css}">
+</head>
+<body>
+    <div th:if="${session['access_' + post.hashKey]}">
+        <!-- Header section -->
+        <div class="header">
+            <h1>PasteBin</h1>
+            <div class="signup">
+                <a href="#">Welcome! [Sign Up]</a>
+            </div>
+        </div>
+
+        <!-- Navbar section -->
+        <div class="navbar">
+            <div style="margin-right: 10px;">
+                <a href="#">Welcome</a>
+                <a href="#">Search</a>
+                <a href="#">Help</a>
+                <a href="#">About</a>
+                <a href="/myPosts">My posts</a>
+                <a href="/post">Post</a>
+            </div>
+            <div>
+                <a href="#">English</a>
+                <a href="#">Русский</a>
+            </div>
+        </div>
+        <div class="container">
+            <h2>View a Post</h2>
+
+            <!-- Notification block -->
+            <div th:if="${message}"
+                 th:class="'notification ' + (${message == 'Successfully'} ? 'success' : 'error')"
+                 th:text="${message}">
+            </div>
+
+            <div id="output" class="output"></div>
+
+            <button id="like-btn" class="like-btn" th:data-post-id="${post.hashKey}">
+                👍 <span id="like-count" th:text="${likeCount}"></span>
+            </button>
+
+            <h2>Comments</h2>
+            <div th:each="comment : ${post.comments}" class="comment-container">
+                <div class="comment-avatar"></div>
+                <div class="comment-content">
+                    <p class="comment-username" th:text="${comment.user.username}"></p>
+                    <p th:text="${comment.text}"></p>
+                </div>
+            </div>
+
+            <form class="comment-form" th:action="@{/post/{id}/comment(id=${post.hashKey})}" method="post">
+                <input class="comment-input" type="text" name="text" placeholder="Write a comment..." required>
+                <button type="submit">Add Comment</button>
+            </form>
+        </div>
+        <script th:inline="javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                const output = document.getElementById("output");
+                const content = /*[[${content}]]*/ '';
+                output.innerHTML = marked.parse(content);
+            });
+
+            $("#like-btn").click(function () {
+                let postId = $(this).data("post-id");
+                $.get("/post/" + postId + "/like", function (data) {
+                    $("#like-count").text(data);
+                });
+            });
+        </script>
+    </div>
+
+    <div th:unless="${session['access_' + post.hashKey]}">
+        <div class="overlay" id="overlay">
+            <div class="password-box">
+                <form th:action="@{/post/check-pass}" method="POST" th:object="${check}" id="passwordForm">
+                    <div th:if="${error}" class="error-message" th:text="${error}"></div>
+                    <h2>Enter your password</h2>
+                    <input type="hidden" name="hashKey" th:value="${post.hashKey}">
+                    <input type="password" name="password" class="password-input"
+                           th:classappend="${error != null} ? 'error'"
+                           th:value="${check?.password}">
+                    <button type="submit">Unlock</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
